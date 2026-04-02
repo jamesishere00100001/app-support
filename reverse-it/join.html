@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Join Reverse-It</title>
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="You've been invited to play Reverse-It!" />
+  <meta property="og:description" content="Tap to join the group and start playing the ultimate audio party game." />
+  <meta property="og:url" content="https://jamesishere00100001.github.io/app-support/reverse-it/join.html" />
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="You've been invited to play Reverse-It!" />
+  <meta name="twitter:description" content="Tap to join the group and start playing the ultimate audio party game." />
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      background: #0d0d1a;
+      font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', sans-serif;
+      color: #fff;
+      padding: 32px 24px;
+      text-align: center;
+    }
+    .icon {
+      width: 100px; height: 100px;
+      background: linear-gradient(135deg, #7c3aed, #a855f7);
+      border-radius: 22px;
+      display: flex; align-items: center; justify-content: center;
+      margin-bottom: 28px;
+      box-shadow: 0 0 40px rgba(168, 85, 247, 0.5);
+      font-size: 48px;
+    }
+    h1 { font-size: 26px; font-weight: 700; margin-bottom: 12px; line-height: 1.2; }
+    p { font-size: 16px; color: #b0b0d0; margin-bottom: 36px; max-width: 320px; }
+    .btn {
+      display: inline-block;
+      padding: 16px 36px;
+      border-radius: 50px;
+      font-size: 17px; font-weight: 600;
+      text-decoration: none; cursor: pointer; border: none;
+    }
+    .btn-primary {
+      background: linear-gradient(135deg, #7c3aed, #a855f7);
+      color: #fff; margin-bottom: 16px;
+      box-shadow: 0 4px 20px rgba(168, 85, 247, 0.4);
+    }
+    .btn-secondary {
+      background: transparent; color: #a855f7;
+      border: 2px solid #7c3aed;
+      font-size: 15px; padding: 12px 28px;
+    }
+    .actions { display: flex; flex-direction: column; align-items: center; gap: 12px; }
+    #status { margin-top: 24px; font-size: 14px; color: #7070a0; }
+  </style>
+</head>
+<body>
+  <div class="icon">&#x1F504;</div>
+  <h1>You've been invited to Reverse-It!</h1>
+  <p>Tap below to open the app and join the group. Don't have the app yet? Download it free from the App Store.</p>
+  <div class="actions">
+    <button class="btn btn-primary" id="open-app">Open in Reverse-It</button>
+    <a class="btn btn-secondary" href="https://apps.apple.com/app/reverse-it/id6761381268">Download on the App Store</a>
+  </div>
+  <p id="status"></p>
+  <script>
+    (function () {
+      var params = new URLSearchParams(window.location.search);
+      var group  = params.get('group');
+      var token  = params.get('token');
+      if (!group || !token) {
+        document.getElementById('status').textContent = 'Invalid invite link.';
+        return;
+      }
+      var deepLink = 'reverseit://join?group=' + encodeURIComponent(group) + '&token=' + encodeURIComponent(token);
+      function openApp() {
+        window.location.href = deepLink;
+        setTimeout(function () {
+          document.getElementById('status').textContent = 'App not installed? Use the Download link below.';
+        }, 2000);
+      }
+      document.getElementById('open-app').addEventListener('click', openApp);
+      setTimeout(openApp, 800);
+    })();
+  </script>
+</body>
+</html>
