@@ -24,6 +24,24 @@
     a { color: #ff3b30; text-decoration: none; }
     footer { text-align: center; padding: 32px 24px; font-size: 0.8rem; color: #8e8e93; }
     footer a { color: #ff3b30; }
+    .lang-bar {
+      background: rgba(0,0,0,0.15);
+      text-align: center;
+      padding: 8px 24px;
+    }
+    .lang-bar a {
+      color: #fff;
+      text-decoration: none;
+      font-size: 0.85rem;
+      font-weight: 600;
+      margin: 0 8px;
+      opacity: 0.75;
+      letter-spacing: 0.5px;
+    }
+    .lang-bar a.active, .lang-bar a:hover {
+      opacity: 1;
+      text-decoration: underline;
+    }
   </style>
 </head>
 <body>
@@ -31,6 +49,12 @@
   <h1>Reverse-It</h1>
   <p>Privacy Policy</p>
 </header>
+<nav class="lang-bar">
+  <a href="privacy.html" class="active">EN</a>
+  <a href="de/privacy.html">DE</a>
+  <a href="fr/privacy.html">FR</a>
+  <a href="es/privacy.html">ES</a>
+</nav>
 <main>
   <section>
     <div class="highlight-box">
